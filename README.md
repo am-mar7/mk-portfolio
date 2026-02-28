@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mohamed Khaled — Video Editor Portfolio
+
+Dark cinematic Next.js 14 portfolio built with App Router, Tailwind CSS, and Framer Motion.
+
+## Stack
+
+| Tool | Purpose |
+|------|---------|
+| **Next.js 14** (App Router) | Framework |
+| **TypeScript** | Type safety |
+| **Tailwind CSS** | Utility-first styling |
+| **Framer Motion** | Animations & transitions |
+| **next/font** | Optimized Google Fonts |
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx        ← Root layout, fonts, metadata
+│   ├── page.tsx          ← Entry point, composes all sections
+│   └── globals.css       ← CSS variables, base styles, keyframes
+├── components/
+│   ├── Cursor.tsx        ← Custom animated cursor + ring
+│   ├── Navbar.tsx        ← Fixed nav with scroll-aware blur
+│   ├── Hero.tsx          ← Full-screen hero with reel card
+│   ├── MarqueeBanner.tsx ← Infinite scrolling tool ticker
+│   ├── Work.tsx          ← Asymmetric 12-col project grid
+│   ├── Services.tsx      ← 2×2 service cards with hover FX
+│   ├── About.tsx         ← Split layout with offset accent box
+│   ├── Process.tsx       ← 4-step process list
+│   ├── Testimonials.tsx  ← 3-col testimonial cards
+│   ├── Contact.tsx       ← Contact form with state management
+│   ├── Footer.tsx        ← Simple footer
+│   └── Reveal.tsx        ← Scroll-triggered animation wrapper
+└── lib/
+    └── data.ts           ← All portfolio data (edit this!)
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Update your data
+Edit `src/lib/data.ts` to change projects, services, skills, and testimonials.
 
-## Learn More
+### 2. Add real project thumbnails
+In `src/components/Work.tsx`, replace the gradient placeholder with `next/image`:
+```tsx
+import Image from "next/image";
+// ...
+<Image src="/projects/pulse.jpg" alt="Pulse Brand Film" fill className="object-cover" />
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Wire up the contact form
+In `src/components/Contact.tsx`, replace the `console.log` in `handleSubmit` with your preferred email service (Resend, EmailJS, Formspree, etc.)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Update contact info
+- Email: `src/components/Contact.tsx` → update `href` and display text
+- Social links: `src/components/Contact.tsx` → update `href` values
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design Tokens
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```css
+--accent:  #ff3c00   /* Hot orange-red */
+--accent2: #ffb800   /* Amber (cursor hover) */
+--bg:      #080808   /* Near-black background */
+--surface: #111111   /* Card / section background */
+--border:  #1e1e1e   /* Subtle borders */
+--muted:   #555555   /* Muted text */
+```
