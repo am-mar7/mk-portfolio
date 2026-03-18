@@ -34,13 +34,13 @@ export const projects = [
   },
   {
     id: 4,
-    title: "3D Animation",
-    type: "Motion Graphics",
+    title: "Real Estate",
+    type: "Commercial",
     colSpan: "col-span-6",
     aspect: "aspect-video",
-    gradient: "from-[#001a0a] via-[#003319] to-[#00100a]",
-    embedUrl: "https://www.youtube.com/embed/oUrWblf0Qlk?rel=0",
-    thumbnailUrl: "https://img.youtube.com/vi/oUrWblf0Qlk/hqdefault.jpg",
+    gradient: "from-[#000d1a] via-[#001020] to-[#00080f]",
+    embedUrl: "https://www.youtube.com/embed/zQ4OZPWqdFo?si=IS9BuyPp2BA0yjjM&controls=0",
+    thumbnailUrl: "https://img.youtube.com/vi/zQ4OZPWqdFo/hqdefault.jpg",
     vertical: false,
   },
   {
