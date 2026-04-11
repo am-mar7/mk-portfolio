@@ -54,6 +54,17 @@ export const projects = [
     thumbnailUrl: "https://img.youtube.com/vi/8e2LqAGaisw/hqdefault.jpg",
     vertical: false,
   },
+  {
+    id: 6,
+    title: "YouTube Short",
+    type: "Social Content",
+    colSpan: "col-span-4",
+    aspect: "aspect-[9/16]",
+    gradient: "from-[#160600] via-[#2a0d00] to-[#120500]",
+    embedUrl: "https://www.youtube.com/embed/kWzbYZjMoSk?rel=0",
+    thumbnailUrl: "https://img.youtube.com/vi/kWzbYZjMoSk/hqdefault.jpg",
+    vertical: true,
+  },
 ];
 
 export const services = [
