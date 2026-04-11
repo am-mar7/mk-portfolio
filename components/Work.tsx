@@ -86,6 +86,9 @@ function ProjectCard({
 }
 
 export default function Work() {
+  const verticalProjects = projects.filter((project) => project.vertical);
+  const horizontalProjects = projects.filter((project) => !project.vertical);
+
   return (
     <section id="work" className="px-5 py-16 md:px-12 md:py-28">
       <Reveal>
@@ -115,15 +118,23 @@ export default function Work() {
           ))}
         </div>
 
-        {/* Desktop: asymmetric 12-col grid */}
-        <div className="hidden md:grid grid-cols-12" style={{ gap: "2px" }}>
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              className={`${project.colSpan} ${project.aspect}`}
-            />
-          ))}
+        {/* Desktop: balanced layout for mixed vertical/horizontal work */}
+        <div className="hidden md:flex md:flex-col" style={{ gap: "2px" }}>
+          {verticalProjects.length > 0 && (
+            <div className="grid grid-cols-4" style={{ gap: "2px" }}>
+              {verticalProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} className="aspect-9/16" />
+              ))}
+            </div>
+          )}
+
+          {horizontalProjects.length > 0 && (
+            <div className="grid grid-cols-2" style={{ gap: "2px" }}>
+              {horizontalProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} className="aspect-video" />
+              ))}
+            </div>
+          )}
         </div>
       </Reveal>
     </section>
