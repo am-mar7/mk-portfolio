@@ -7,8 +7,7 @@ const fadeUp = (delay: number) => ({
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.75, delay, ease: [0.42, 0, 0.58, 1] as const },
 });
-
-const SHOWREEL_ID = "FVwhrK4512o";
+const SHOWREEL_ID = "vn3-fccOSE0";
 const SHOWREEL_EMBED = `https://www.youtube.com/embed/${SHOWREEL_ID}?rel=0&modestbranding=1`;
 
 export default function Hero() {

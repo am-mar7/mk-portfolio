@@ -12,13 +12,13 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Portfolio Reel",
+    title: "world cup 2026  ",
     type: "Showreel",
     colSpan: "col-span-4",
     aspect: "aspect-[9/16]",
     gradient: "from-[#1a0a00] via-[#3d1500] to-[#1a0000]",
-    embedUrl: "https://www.youtube.com/embed/r4Q1fw1jdVg?rel=0",
-    thumbnailUrl: "https://img.youtube.com/vi/r4Q1fw1jdVg/hqdefault.jpg",
+    embedUrl: "https://www.youtube.com/embed/FVwhrK4512o?rel=0",
+    thumbnailUrl: "https://img.youtube.com/vi/FVwhrK4512o/hqdefault.jpg",
     vertical: true,
   },
   {
