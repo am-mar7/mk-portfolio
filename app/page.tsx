@@ -9,16 +9,23 @@ import Footer from "@/components/Footer";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Process from "@/components/Process";
+import { getPublishedProjects } from "@/lib/projects";
 
-export default function Home() {
+export const revalidate = 3600; // revalidate cache every hour (Actions will call revalidatePath anyway for instant updates!)
+
+export default async function Home() {
+  const projects = await getPublishedProjects();
+  // Project #1 is featured in the Hero; the rest (2…last) go to the Work grid.
+  const [featured, ...rest] = projects;
+
   return (
     <>
       <Cursor />
       <Navbar />
       <main>
-        <Hero />
+        <Hero featured={featured} />
         <MarqueeBanner />
-        <Work />
+        <Work projects={rest} />
         <Services />
         <About />
         <Process />

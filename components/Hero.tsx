@@ -1,16 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Project } from "@/lib/projects";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.75, delay, ease: [0.42, 0, 0.58, 1] as const },
 });
-const SHOWREEL_ID = "vn3-fccOSE0";
-const SHOWREEL_EMBED = `https://www.youtube.com/embed/${SHOWREEL_ID}?rel=0&modestbranding=1`;
 
-export default function Hero() {
+// Fallback showreel used when there is no featured project in the database yet
+const SHOWREEL_ID = "vn3-fccOSE0";
+const FALLBACK_EMBED = `https://www.youtube.com/embed/${SHOWREEL_ID}?rel=0&modestbranding=1`;
+const FALLBACK_TITLE = "Latest";
+const FALLBACK_DESC =
+  "Zidane — a cinematic short edit celebrating one of football's greatest icons, blending archival footage with dynamic color grading and motion graphics.";
+
+export default function Hero({ featured }: { featured?: Project }) {
+  const embedSrc = featured
+    ? `${featured.embed_url}${featured.embed_url.includes("?") ? "&" : "?"}rel=0&modestbranding=1`
+    : FALLBACK_EMBED;
+  const label = featured?.type || FALLBACK_TITLE;
+  const description = featured?.title || FALLBACK_DESC;
+  const cardAspect = featured ? (featured.vertical ? "9 / 16" : "16 / 9") : "9 / 16";
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center gap-10 px-5 pt-28 pb-16 overflow-hidden md:grid md:grid-cols-2 md:items-center md:gap-16 md:px-12 md:pt-32 md:pb-20">
       {/* Glow */}
@@ -69,36 +82,33 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Right: Reel card ── */}
+      {/* ── Right: Reel card (featured project #1) ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.4 }}
       >
         {/* Inline video — no modal, plays right here */}
-        <div className="mx-auto md:max-w-75">
+        <div className={`mx-auto ${cardAspect === "9 / 16" ? "md:max-w-75" : "md:max-w-md"}`}>
           <div
-            className="relative overflow-hidden border border-(--border) bg-(--surface)"
-            style={{ aspectRatio: "9 / 16" }}
+            className="relative overflow-hidden rounded-2xl border border-(--border) bg-(--surface)"
+            style={{ aspectRatio: cardAspect }}
           >
             <iframe
-              src={SHOWREEL_EMBED}
+              src={embedSrc}
               className="absolute inset-0 w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              title="Mohamed Khaled Showreel 2024"
+              title={description}
             />
           </div>
 
-          {/* Latest project label */}
+          {/* Featured project label */}
           <div className="mt-3 px-1 flex items-start gap-3 border-t border-(--border) pt-3">
             <span className="font-mono text-[9px] tracking-[3px] uppercase text-(--accent) mt-0.5 shrink-0">
-              Latest
+              {label}
             </span>
-            <p className="font-mono text-[11px] leading-[1.6] text-(--muted)">
-              Zidane — a cinematic short edit celebrating one of football&apos;s greatest icons,
-              blending archival footage with dynamic color grading and motion graphics.
-            </p>
+            <p className="font-mono text-[11px] leading-[1.6] text-(--muted)">{description}</p>
           </div>
         </div>
       </motion.div>

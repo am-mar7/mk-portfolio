@@ -58,10 +58,10 @@ export default function Contact() {
             Or email me directly
           </p>
           <a
-            href="mailto:mohamedkhaled@email.com"
+            href="mailto:m7medvideoeditorr@gmail.com"
             className="font-display text-[18px] tracking-[1px] text-(--text) no-underline border-b border-(--accent) pb-1 inline-block hover:text-(--accent) transition-colors duration-200 md:text-[24px] md:tracking-[2px]"
           >
-            mohamedkhaled@email.com
+            m7medvideoeditorr@gmail.com
           </a>
         </div>
 
